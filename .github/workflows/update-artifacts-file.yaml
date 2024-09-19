@@ -31,6 +31,7 @@ jobs:
         with:
           repository: MapColonies/helm-charts
           path: helm-charts
+          ref: feat/MAPCO-4702-image-updater
           token: ${{ secrets.GH_PAT }}
 
       - name: Set up Node.js
@@ -82,7 +83,7 @@ jobs:
             else
               sleep 5
               # --ff for fast-forward
-              git pull origin master --ff
+              git pull origin feat/MAPCO-4702-image-updater --ff
             fi
           done
 
