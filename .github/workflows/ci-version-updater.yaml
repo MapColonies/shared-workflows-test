@@ -1,0 +1,52 @@
+name: CI Version Updater
+
+on:
+  workflow_call:
+    inputs:
+      scope:
+        required: true
+        type: string
+      repository:
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: feat/MAPCO-4702-image-updater
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Checkout helm-charts repository
+        uses: actions/checkout@v4
+        with:
+          repository: MapColonies/helm-charts
+          path: helm-charts
+          ref: feat/MAPCO-4702-image-updater
+          token: ${{ secrets.GH_PAT }}
+
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/scripts/ci_requirements.txt
+
+      - name: Run Python ci version updater
+        run: |
+          servie_name="${{ inputs.repository || github.event.repository.name }}"
+          echo "servie_name=$servie_name"
+          pwd
+          python .github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${servie_name}" --service-version ${{ github.ref_name }}
