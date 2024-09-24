@@ -19,9 +19,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Shared Workflows repository
         uses: actions/checkout@v4
         with:
+          repository: MapColonies/shared-workflows
+          path: shared-workflows
           ref: feat/MAPCO-4702-image-updater
           token: ${{ secrets.GH_PAT }}
 
@@ -50,11 +52,11 @@ jobs:
           echo "scope=${{ inputs.scope }}"
           echo "version=${{ github.ref_name }}"
           echo "repo=${{ github.repository }}"
-          pip install -r .github/scripts/ci_requirements.txt
+          pip install -r shared-workflows/.github/scripts/ci_requirements.txt
 
       - name: Run Python ci version updater
         run: |
           servie_name="${{ inputs.repository || github.event.repository.name }}"
           echo "servie_name=$servie_name"
           pwd
-          python .github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${servie_name}" --service-version ${{ github.ref_name }}
+          python shared-workflows/.github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${servie_name}" --service-version ${{ github.ref_name }}
