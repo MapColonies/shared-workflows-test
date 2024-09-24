@@ -43,22 +43,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-
           python -m pip install --upgrade pip
-          pwd
-          ls -la
-          servie_name="${{ inputs.repository || github.event.repository.name }}"
-          echo "servie_name=$servie_name"
-          echo "scope=${{ inputs.scope }}"
-          echo "version=${{ github.ref_name }}"
-          echo "repo=${{ github.repository }}"
           pip install -r shared-workflows/.github/scripts/ci_requirements.txt
 
       - name: Run Python ci version updater
         run: |
           servie_name="${{ inputs.repository || github.event.repository.name }}"
-          echo "servie_name=$servie_name"
-          pwd
           python shared-workflows/.github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${servie_name}" --service-version ${{ github.ref_name }}
 
       - name: Commit changes
