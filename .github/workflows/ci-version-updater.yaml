@@ -69,7 +69,7 @@ jobs:
             else
               sleep 5
               # --ff for fast-forward
-              git pull origin feat/MAPCO-4702-image-updater --ff
+              git pull origin master --ff
             fi
           done
 
