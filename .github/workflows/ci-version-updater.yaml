@@ -46,8 +46,8 @@ jobs:
 
       - name: Run Python ci version updater
         run: |
-          servie_name="${{ inputs.repository || github.event.repository.name }}"
-          python shared-workflows/.github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${servie_name}" --service-version ${{ github.ref_name }}
+          service_name="${{ inputs.repository || github.event.repository.name }}"
+          python shared-workflows/.github/scripts/ci_version_updater.py --charts-root-path helm-charts --scope "${{ inputs.scope }}" --service-name "${service_name}" --service-version ${{ github.ref_name }}
 
       - name: Commit changes
         run: |
@@ -57,8 +57,8 @@ jobs:
 
           git add .
           # Add "|| true" for not failing on this line
-          servie_name="${{ inputs.repository || github.event.repository.name }}"
-          git commit -m "chore: update charts for ${{ inputs.scope }}/${servie_name} with version ${{ github.ref_name }}" || true
+          service_name="${{ inputs.repository || github.event.repository.name }}"
+          git commit -m "chore: update charts for ${{ inputs.scope }}/${service_name} with version ${{ github.ref_name }}" || true
 
           success=false
           for ((i=1; i<=5; i++)); do
