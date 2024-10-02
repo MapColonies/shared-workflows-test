@@ -24,7 +24,6 @@ jobs:
         with:
           repository: MapColonies/shared-workflows
           path: shared-workflows
-          ref: feat/MAPCO-4702-image-updater
           token: ${{ secrets.GH_PAT }}
 
       - name: Checkout helm-charts repository
@@ -32,7 +31,6 @@ jobs:
         with:
           repository: MapColonies/helm-charts
           path: helm-charts
-          ref: feat/MAPCO-4702-image-updater
           token: ${{ secrets.GH_PAT }}
 
 

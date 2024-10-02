@@ -31,7 +31,6 @@ jobs:
         with:
           repository: MapColonies/helm-charts
           path: helm-charts
-          ref: feat/MAPCO-4702-image-updater
           token: ${{ secrets.GH_PAT }}
 
       - name: Set up Node.js
