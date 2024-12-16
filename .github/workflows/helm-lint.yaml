@@ -18,8 +18,6 @@ jobs:
           repository: MapColonies/shared-workflows
           path: shared-workflows
           token: ${{ secrets.GH_PAT }}
-          ref: feat/add-chart-lint
-          
 
       - name: Set up Helm
         uses: azure/setup-helm@v4.2.0
