@@ -35,10 +35,9 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          pwd
-          ls -la
-          exit 1
+          ct list-changed --config shared-workflows/configs/ct.yaml
           changed=$(ct list-changed --config shared-workflows/configs/ct.yaml)
+          echo "changed=$changed"
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
