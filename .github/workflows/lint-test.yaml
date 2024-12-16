@@ -37,8 +37,9 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          ct list-changed --config shared-workflows/configs/ct.yaml
-          changed=$(ct list-changed --config shared-workflows/configs/ct.yaml)
+          ls -la shared-workflows
+          ct list-changed --config shared-workflows/.github/configs/ct.yaml
+          changed=$(ct list-changed --config shared-workflows/.github/configs/ct.yaml)
           echo "changed=$changed"
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -46,7 +47,7 @@ jobs:
 
       - name: Run chart-testing (lint)
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint --config shared-workflows/configs/ct.yaml
+        run: ct lint --config shared-workflows/.github/configs/ct.yaml
 
       - name: Create kind cluster
         if: steps.list-changed.outputs.changed == 'true'
@@ -54,4 +55,4 @@ jobs:
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct install --config shared-workflows/configs/ct.yaml
+        run: ct install --config shared-workflows/.github/configs/ct.yaml
