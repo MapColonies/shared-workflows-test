@@ -38,6 +38,7 @@ jobs:
         id: list-changed
         run: |
           ls -la shared-workflows
+          ls -la helm
           ct list-changed --config shared-workflows/.github/configs/ct.yaml
           changed=$(ct list-changed --config shared-workflows/.github/configs/ct.yaml)
           echo "changed=$changed"
