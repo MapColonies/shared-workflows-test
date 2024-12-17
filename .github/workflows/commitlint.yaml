@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: add-commitlint
+        #   ref: add-commitlint
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v6
