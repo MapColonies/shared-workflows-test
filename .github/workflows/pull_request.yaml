@@ -18,11 +18,11 @@ on:
         type: boolean
         required: false
         default: false
-      runHelmLint:
+      enableHelmLint:
         description: "Flag to enable helm lint"
         type: boolean
         required: false
-        default: false
+        default: true
       chartDirs:
         description: "The root dir or dirs (separated with commas)"
         type: string
@@ -31,7 +31,7 @@ on:
 
 jobs:
   helm-lint:
-    if: ${{ inputs.runHelmLint == true }}
+    if: ${{ inputs.enableHelmLint == true }}
     uses: MapColonies/shared-workflows/.github/workflows/helm-lint.yaml@master
     secrets: inherit
     with:
