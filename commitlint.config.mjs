@@ -1,7 +1,7 @@
 export default {
   extends: ["@commitlint/config-conventional"],
   rules: {
-    "scope-empty": [0, "never"],
+    "scope-empty": [1, "never"],
     "scope-enum": [
       2,
       "always",
