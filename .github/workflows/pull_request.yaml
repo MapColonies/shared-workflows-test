@@ -18,9 +18,15 @@ on:
         type: boolean
         required: false
         default: false
+      runHelmLint:
+        description: "Flag to enable helm lint"
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   helm-lint:
+    if: ${{ inputs.runHelmLint == true }}
     uses: MapColonies/shared-workflows/.github/workflows/helm-lint.yaml@master
     secrets: inherit
 

@@ -35,7 +35,7 @@ jobs:
       - name: Run chart-testing (list-changed)
         id: list-changed
         run: |
-          changed=$(ct list-changed --config shared-workflows/.github/configs/ct.yaml)
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }} --config shared-workflows/.github/configs/ct.yaml)
           echo "changed=$changed"
           if [[ -n "$changed" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -43,7 +43,7 @@ jobs:
 
       - name: Run chart-testing (lint)
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct lint --config shared-workflows/.github/configs/ct.yaml --lint-conf shared-workflows/.github/configs/lintconf.yaml
+        run: ct lint --target-branch ${{ github.event.repository.default_branch }} --config shared-workflows/.github/configs/ct.yaml --lint-conf shared-workflows/.github/configs/lintconf.yaml
 
       - name: Create kind cluster
         if: steps.list-changed.outputs.changed == 'true'
@@ -51,4 +51,4 @@ jobs:
 
       - name: Run chart-testing (install)
         if: steps.list-changed.outputs.changed == 'true'
-        run: ct install --config shared-workflows/.github/configs/ct.yaml
+        run: ct install --target-branch ${{ github.event.repository.default_branch }} --config shared-workflows/.github/configs/ct.yaml
