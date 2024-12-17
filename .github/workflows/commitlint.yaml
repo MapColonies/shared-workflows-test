@@ -1,5 +1,5 @@
 name: Lint Commit Messages
-on: [push]
+on: [push] 
 
 jobs:
   commitlint:
@@ -9,5 +9,5 @@ jobs:
         with:
           fetch-depth: 0
       - uses: wagoid/commitlint-github-action@v6
-        with:
-          configFile: ../commitlint.config.mjs
+        # with:
+        #   configFile: ../commitlint.config.mjs

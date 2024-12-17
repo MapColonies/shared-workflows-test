@@ -2,7 +2,7 @@ export default {
     extends: ['@commitlint/config-conventional'],
     rules: {
         'scope-empty': [2, 'always'],
-        'scope-enum': [1, 'always', [
+        'scope-enum': [2, 'always', [
             'repo',
             'commitlint',
             'pull-request', 
