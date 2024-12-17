@@ -23,12 +23,19 @@ on:
         type: boolean
         required: false
         default: false
+      chartDirs:
+        description: "The root dir or dirs (separated with commas)"
+        type: string
+        required: false
+        default: "."
 
 jobs:
   helm-lint:
     if: ${{ inputs.runHelmLint == true }}
     uses: MapColonies/shared-workflows/.github/workflows/helm-lint.yaml@master
     secrets: inherit
+    with:
+      chartDirs: ${{ inputs.chartDirs }}
 
   eslint:
     name: Run eslint
