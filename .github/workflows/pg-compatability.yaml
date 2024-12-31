@@ -1,4 +1,4 @@
-name: pg_compatability
+name: pg_compatibility
 
 on:
   issue_comment:
@@ -32,7 +32,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            **Postgres and postgis compatability:**
+            **Postgres and postgis compatibility:**
 
       # If a comment exists, update it with the date and time
       - name: Update comment
@@ -93,7 +93,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           comment-author: 'github-actions[bot]'
-          body-includes: Postgres and postgis compatability
+          body-includes: Postgres and postgis compatibility
   
       # If a comment exists, update it with the test result
       - name: Update comment
