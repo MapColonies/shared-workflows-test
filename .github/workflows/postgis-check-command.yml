@@ -1,27 +1,47 @@
-name: pg_compatibility
+name: postgis-check
 
 on:
-  issue_comment:
-    types: [created]
   workflow_dispatch:
+    inputs:
+      issue-number:
+        description: 'The issue-number of the slash command'
+        required: true
+      comment-creation-date:
+        description: 'The slash command creation date'
+        required: true
+      versions:
+        description: 'Wanted postgis versions to check'
+        default: 12-2.5,13-3.3,14-3.3,14-3.5,16-3.5,17-3.5
+        required: false
 
-env: 
+env:
   DB_HOST: localhost
-  
 
 jobs:
+  # Convert versions variable from comma delimited string to JSON
+  versions_to_json:
+    name: Convert versions input to JSON
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.convert-to-json.outputs.VERSIONS }}
+    steps:
+      - id: convert-to-json
+        run: |
+          versions=$(echo ${{ inputs.versions }} | jq -R -c 'split(",")')
+          echo "VERSIONS=$versions" >> $GITHUB_OUTPUT
+  
+  # Create a PR comment for the workflow's results
   create_comment:
     name: Create comment
     runs-on: ubuntu-latest
-    if: github.event.comment.body == 'pg-check'
 
     steps:
       # Find our bot's comment
       - name: Find Comment
-        uses: peter-evans/find-comment@v1
+        uses: peter-evans/find-comment@v3
         id: fc
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ inputs.issue-number }}
           comment-author: 'github-actions[bot]'
           body-includes: Postgres and postgis compatibility
 
@@ -41,17 +61,18 @@ jobs:
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           body: |
-            **${{ github.event.comment.created_at }}**
+            **${{ inputs.comment-creation-date }}**
 
   tests:
     name: Run Tests
+    needs: [versions_to_json, create_comment]
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
         node: [20.x]
-        postgres: [12-2.5, 13-3.3, 14-3.3, 14-3.5, 16-3.5, 17-3.5]
+        postgres: ${{ fromJSON(needs.versions_to_json.outputs.versions) }}
 
     services:
       postgres:
@@ -88,16 +109,16 @@ jobs:
       # Find our bot's comment
       - name: Find Comment
         uses: peter-evans/find-comment@v3
-        if: always() && github.event.comment.body == 'pg-check'
+        if: always()
         id: fc
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ inputs.issue-number }}
           comment-author: 'github-actions[bot]'
           body-includes: Postgres and postgis compatibility
   
       # If a comment exists, update it with the test result
       - name: Update comment
-        if: always() && github.event.comment.body == 'pg-check' && steps.fc.outputs.comment-id != ''
+        if: always() && steps.fc.outputs.comment-id != ''
         uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
