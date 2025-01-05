@@ -7,7 +7,7 @@ on:
         description: 'The issue-number of the slash command'
         required: true
       comment-creation-date:
-        description: 'The slash command creation date'
+        description: 'The slash command creation date passed from the slash-command workflow'
         required: true
       versions:
         description: 'Wanted postgis docker versions to check'
@@ -50,34 +50,14 @@ jobs:
   create_comment:
     name: Create comment
     runs-on: ubuntu-latest
-
     steps:
-      # Find our bot's comment
-      - name: Find Comment
-        uses: peter-evans/find-comment@v3
-        id: fc
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ inputs.issue-number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Postgres and postgis compatibility
-
-      # Create a comment if it doesn't exist
-      - name: Create comment
-        if: steps.fc.outputs.comment-id == ''
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            **Postgres and postgis compatibility:**
-
-      # If a comment exists, update it with the date and time
-      - name: Update comment
-        if: steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
           body: |
             **${{ inputs.comment-creation-date }}**
+            Checking postgis compatability for latest commit
 
   tests:
     name: Run Tests
@@ -130,7 +110,7 @@ jobs:
         with:
           issue-number: ${{ inputs.issue-number }}
           comment-author: 'github-actions[bot]'
-          body-includes: Postgres and postgis compatibility
+          body-includes: ${{ inputs.comment-creation-date }}
   
       # If a comment exists, update it with the test result
       - name: Update comment
