@@ -13,6 +13,10 @@ on:
         description: 'Wanted postgis docker versions to check'
         default: 12-2.5,13-3.3,14-3.3,14-3.5,16-3.5,17-3.5
         required: false
+      node-versions:  
+        description: 'Node.js versions to check'  
+        default: 20.x  
+        required: false                                   
 
 env:
   DB_HOST: localhost
@@ -29,6 +33,18 @@ jobs:
         run: |
           versions=$(echo ${{ inputs.versions }} | jq -R -c 'split(",")')
           echo "VERSIONS=$versions" >> $GITHUB_OUTPUT
+  
+  # Convert node-versions variable from comma-delimited string to JSON  
+  node_versions_to_json:
+    name: Convert node-versions input to JSON
+    runs-on: ubuntu-latest
+    outputs:
+      node_versions: ${{ steps.convert-to-json.outputs.NODE_VERSIONS }}
+    steps:
+      - id: convert-to-json
+        run: |
+          versions=$(echo ${{ inputs.node-versions }} | jq -R -c 'split(",")')
+          echo "NODE_VERSIONS=$versions" >> $GITHUB_OUTPUT
   
   # Create a PR comment for the workflow's results
   create_comment:
@@ -65,13 +81,13 @@ jobs:
 
   tests:
     name: Run Tests
-    needs: [versions_to_json, create_comment]
+    needs: [node_versions_to_json, versions_to_json, create_comment]
     runs-on: ubuntu-latest
 
     strategy:
       fail-fast: false
       matrix:
-        node: [20.x]
+        node: ${{ fromJSON(needs.node_versions_to_json.outputs.node_versions) }}
         postgres: ${{ fromJSON(needs.versions_to_json.outputs.versions) }}
 
     services:
