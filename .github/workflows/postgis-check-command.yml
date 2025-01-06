@@ -1,20 +1,24 @@
 name: postgis-check
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       issue-number:
         description: 'The issue-number of the slash command'
+        type: string
         required: true
       comment-creation-date:
         description: 'The slash command creation date passed from the slash-command workflow'
+        type: string
         required: true
       versions:
         description: 'Wanted postgis docker versions to check'
+        type: string
         default: 12-2.5,13-3.3,14-3.3,14-3.5,16-3.5,17-3.5
         required: false
       node-versions:
         description: 'Node.js versions to check'
+        type: string
         default: 20.x
         required: false
 
