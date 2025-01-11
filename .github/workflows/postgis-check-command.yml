@@ -42,7 +42,7 @@ jobs:
           fi
 
           if [ -z "${{inputs.node-versions}}" ]; then
-            node_versions=${{env.DEFAULT_VERSIONS}}
+            node_versions=${{env.DEFAULT_NODE_VERSIONS}}
           else
             node_versions=${{ inputs.node-versions }}
           fi
