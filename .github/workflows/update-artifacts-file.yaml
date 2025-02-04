@@ -20,6 +20,7 @@ on:
         description: "Artifact`s tag"
         type: string
         required: true
+  workflow_dispatch:
 
 jobs:
   update-artifacts-json:
