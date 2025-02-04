@@ -21,6 +21,23 @@ on:
         type: string
         required: true
   workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Scope description'
+        required: true
+        type: string
+      type:
+        description: 'Type description'
+        required: true
+        type: string
+      artifact-name:
+        description: 'Artifact name description'
+        required: true
+        type: string
+      artifact-tag:
+        description: 'Artifact tag description'
+        required: true
+        type: string
 
 jobs:
   update-artifacts-json:
