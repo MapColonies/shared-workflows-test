@@ -48,6 +48,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: MapColonies/helm-charts
+          ref: debug-ci
           path: helm-charts
           token: ${{ secrets.GH_PAT }}
 
