@@ -101,7 +101,7 @@ jobs:
             else
               sleep 5
               # --ff for fast-forward
-              git pull origin master --ff
+              git pull origin debug-ci --ff
             fi
           done
 
