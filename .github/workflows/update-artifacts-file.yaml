@@ -73,8 +73,8 @@ jobs:
             // Ensure nested structure: docker -> registry -> scope -> artifact:tag
             if (!data['${{ inputs.type }}']) data['${{ inputs.type }}'] = {};
             if (!data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']) data['${{ inputs.type }}']['${{ secrets.ACR_URL }}'] = {};
-            if (!data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${scope}']) data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${scope}'] = {};
-            data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${{ inputs.artifact-name }}'] = '${{scope}']['${{ inputs.artifact-tag }}';
+            if (!data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${element}']) data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${element}'] = {};
+            data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']['${element}']['${{ inputs.artifact-name }}'] = '${{ inputs.artifact-tag }}';
             // Writing new file contents
             fs.writeFileSync(path, JSON.stringify(data, null, 2));
             "
