@@ -20,24 +20,6 @@ on:
         description: "Artifact`s tag"
         type: string
         required: true
-  workflow_dispatch:
-    inputs:
-      scope:
-        description: 'Scope description'
-        required: true
-        type: string
-      type:
-        description: 'Type description'
-        required: true
-        type: string
-      artifact-name:
-        description: 'Artifact name description'
-        required: true
-        type: string
-      artifact-tag:
-        description: 'Artifact tag description'
-        required: true
-        type: string
 
 jobs:
   update-artifacts-json:
@@ -48,7 +30,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: MapColonies/helm-charts
-          ref: debug-ci
           path: helm-charts
           token: ${{ secrets.GH_PAT }}
 
@@ -72,7 +53,7 @@ jobs:
               data = JSON.parse(fs.readFileSync(path, 'utf8'));
             }
             // Ensure nested structure: docker -> registry -> scope -> artifact:tag
-            if (!data['${{ inputs.type }}']) data['${{ inputs.type }}'] = {};
+            //if (!data['${{ inputs.type }}']) data['${{ inputs.type }}'] = {};
             if (!data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']) data['${{ inputs.type }}']['${{ secrets.ACR_URL }}'] = {};
             // Construct the composite key combining scope and artifact name
             const compositeKey = '${element}/${{ inputs.artifact-name }}';
@@ -104,7 +85,7 @@ jobs:
             else
               sleep 5
               # --ff for fast-forward
-              git pull origin debug-ci --ff
+              git pull origin master --ff
             fi
           done
 
