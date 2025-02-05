@@ -3,7 +3,7 @@ name: Slash Command Dispatch
 on:
   workflow_call:
     inputs:
-      base_ref:
+      base-ref:
         description: 'Reference to branch to run on'
         required: true
         type: string
@@ -25,7 +25,7 @@ jobs:
             postgis-check
           dispatch-type: workflow
           static-args: |
-            base_ref=${{ inputs.base_ref }}
+            base-ref=${{ inputs.base-ref }}
             issue-number=${{ github.event.issue.number }}
             comment-creation-date=${{ github.event.comment.created_at }}
       - name: Edit comment with error message
