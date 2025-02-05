@@ -54,7 +54,6 @@ jobs:
             }
             // Ensure nested structure: docker -> registry -> scope -> artifact:tag
             if (!data['${{ inputs.type }}']['${{ secrets.ACR_URL }}']) data['${{ inputs.type }}']['${{ secrets.ACR_URL }}'] = {};
-            // Construct the composite key combining scope and artifact name
             const compositeKey = '${element}/${{ inputs.artifact-name }}';
             // Assign the artifact tag to the composite key
             data['${{ inputs.type }}']['${{ secrets.ACR_URL }}'][compositeKey] = '${{ inputs.artifact-tag }}';
