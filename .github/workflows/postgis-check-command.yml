@@ -23,7 +23,7 @@ on:
         description: 'Node.js versions to check'
         type: string
         required: false
-      schema:
+      db-schema:
         description: 'Wanted schema for migrations'
         type: string
         required: true
@@ -143,8 +143,8 @@ jobs:
         run: npm ci
       
       - name: Create schema
-        if: inputs.schema != ''
-        run: psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE SCHEMA ${{ inputs.schema }};'
+        if: inputs.db-schema != ''
+        run: psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE SCHEMA ${{ inputs.db-schema }};'
         env:
           PGPASSWORD: ${{ env.DB_PASSWORD }}
 
