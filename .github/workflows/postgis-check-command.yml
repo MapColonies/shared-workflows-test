@@ -3,7 +3,7 @@ name: postgis-check
 on:
   workflow_call:
     inputs:
-      base-ref:
+      head-sha:
         description: 'Reference to the branch to run against'
         type: string
         required: true
@@ -132,7 +132,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.base-ref }}
+          ref: ${{ inputs.head-sha }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
