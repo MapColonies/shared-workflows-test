@@ -1,7 +1,7 @@
 name: Slash Command Dispatch
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       ref:
         description: 'Reference to branch to run on'
