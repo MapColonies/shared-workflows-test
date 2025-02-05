@@ -2,29 +2,25 @@ name: Slash Command Dispatch
 
 on:
   workflow_call:
+    inputs:
+      ref:
+        description: 'Reference to branch to run on'
+        required: true
+        type: string
 
 jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: resolve pr refs
-        id: refs
-        uses: eficode/resolve-pr-refs@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Checkout pull request branch
-      #   uses: actions/checkout@v4
-      #   with:
-      #     ref: ${{ steps.refs.outputs.base_ref }}
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      # - name: Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v4
         with:
-          ref: ${{ steps.refs.outputs.base_ref }}
+          ref: ${{ inputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             postgis-check
