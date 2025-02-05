@@ -3,6 +3,10 @@ name: postgis-check
 on:
   workflow_call:
     inputs:
+      base-ref:
+        description: 'Reference to the branch to run against'
+        type: string
+        required: true
       issue-number:
         description: 'The issue-number of the slash command'
         type: string
@@ -123,6 +127,8 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.base-ref }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
