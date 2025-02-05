@@ -7,6 +7,15 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
+      - name: resolve pr refs
+        id: refs
+        uses: eficode/resolve-pr-refs@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Checkout pull request branch
+      #   uses: actions/checkout@v4
+      #   with:
+      #     ref: ${{ steps.refs.outputs.base_ref }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -15,6 +24,7 @@ jobs:
         id: scd
         uses: peter-evans/slash-command-dispatch@v4
         with:
+          ref: ${{ steps.refs.outputs.base_ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             postgis-check
