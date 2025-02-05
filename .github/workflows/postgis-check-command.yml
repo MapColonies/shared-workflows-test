@@ -23,6 +23,10 @@ on:
         description: 'Node.js versions to check'
         type: string
         required: false
+      schema:
+        description: 'Wanted schema for migrations'
+        type: string
+        required: true
 
 env:
   DB_HOST: localhost
