@@ -20,12 +20,12 @@ jobs:
         id: scd
         uses: peter-evans/slash-command-dispatch@v4
         with:
-          ref: ${{ inputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
           commands: |
             postgis-check
           dispatch-type: workflow
           static-args: |
+            ref=${{ inputs.ref }}
             issue-number=${{ github.event.issue.number }}
             comment-creation-date=${{ github.event.comment.created_at }}
       - name: Edit comment with error message
