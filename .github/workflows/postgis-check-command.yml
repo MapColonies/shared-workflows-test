@@ -141,6 +141,15 @@ jobs:
 
       - name: Install TS Project dependencies
         run: npm ci
+      
+      - name: Create schema
+        if: inputs.schema != ''
+        run: psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE SCHEMA ${{ inputs.schema }};'
+        env:
+          PGPASSWORD: ${{ env.DB_PASSWORD }}
+
+      - name: Run migrations
+        run: npm run migration:run
 
       - name: Run integration tests
         id: test
