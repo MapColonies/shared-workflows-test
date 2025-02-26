@@ -156,7 +156,7 @@ jobs:
         run: |
           IFS=',' read -r -a extensions_list <<< "$list"
           # extensions_list = $(echo $list | jq -R -c 'split(",")')
-          for e in "${extensions_list}"; do
+          for e in "${extensions_list[@]}"; do
             psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE EXTENSION IF NOT EXISTS "$e";'
           done
         env:
