@@ -152,15 +152,15 @@ jobs:
         env:
           PGPASSWORD: ${{ env.DB_PASSWORD }}
       
-      - name: Create extensions
-        run: |
-          IFS=',' read -r -a extensions_list <<< "$list"
-          # extensions_list = $(echo $list | jq -R -c 'split(",")')
-          for e in "${extensions_list[@]}"; do
-            psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE EXTENSION IF NOT EXISTS "$e";'
-          done
-        env:
-          PGPASSWORD: ${{ env.DB_PASSWORD }}
+      # - name: Create extensions
+      #   run: |
+      #     IFS=',' read -r -a extensions_list <<< "$list"
+      #     # extensions_list = $(echo $list | jq -R -c 'split(",")')
+      #     for e in "${extensions_list[@]}"; do
+      #       psql -h $DB_HOST -d $DB_NAME -U $DB_USERNAME -c 'CREATE EXTENSION IF NOT EXISTS "$e";'
+      #     done
+      #   env:
+      #     PGPASSWORD: ${{ env.DB_PASSWORD }}
 
       - name: Run migrations
         run: npm run migration:run
