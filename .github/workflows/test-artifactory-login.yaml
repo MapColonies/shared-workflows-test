@@ -3,10 +3,14 @@ name: Test artifactory-login action
 on:
   workflow_dispatch:
   workflow_call:
-
-permissions:
-  contents: read
-  id-token: write
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/artifactory-login/**"
+  pull_request:
+    paths:
+      - "actions/artifactory-login/**"
 
 jobs:
   test-artifactory-login:
