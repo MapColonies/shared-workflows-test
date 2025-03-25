@@ -8,10 +8,7 @@ on:
       - master
     paths:
       - "actions/npm-publish/**"
-  pull_request:
-    paths:
-      - "actions/npm-publish/**"
-      
+
 jobs:
   publish:
     runs-on: ubuntu-latest
