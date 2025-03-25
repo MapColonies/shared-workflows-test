@@ -3,11 +3,14 @@ name: Update artifacts.json
 on:
   workflow_dispatch:
   workflow_call:
-
-permissions:
-  contents: write
-  id-token: write
-  actions: write
+  push:
+    branches:
+      - master
+    paths:
+      - "actions/update-artifacts-file/**"
+  pull_request:
+    paths:
+      - "actions/update-artifacts-file/**"
 
 jobs:
   update-artifacts-json:
@@ -19,6 +22,7 @@ jobs:
       - name: Update artifacts.json
         uses: ./actions/update-artifacts-file
         with:
+          type: "docker"
           context: actions/update-artifacts-file
           scope: infra
           repository: ${{ env.action_repo }}

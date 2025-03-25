@@ -8,6 +8,9 @@ inputs:
   repository:
     description: "Repository for the Helm Chart."
     required: true
+  registry:
+    description: "Registry to push the artifact to."
+    required: true
   context:
     description: "Path to the helm directory."
     required: true
@@ -49,7 +52,7 @@ runs:
         ARTIFACT_NAME: ${{ inputs.artifact-name }}
         ARTIFACT_TAG: ${{ inputs.artifact-tag }}
         TYPE: ${{ inputs.type }}
-        REGISTRY: "acrarolibotnonprod.azurecr.io"
+        REGISTRY: ${{ inputs.registry }}
 
     - name: Set commit Permission
       run: chmod +x ./commit-changes.sh
