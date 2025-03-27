@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.ACR_PUSH_USER }}
           password: ${{ secrets.ACR_PUSH_TOKEN }}
 
-      - name: Test Build Docker Image
+      - name: Test Build and push Docker Image
         uses: ./actions/build-and-push-docker
         with:
           context: .
