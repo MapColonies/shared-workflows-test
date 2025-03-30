@@ -4,12 +4,12 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
 
 ## 🛠 Inputs
 
-| Name         | Description                                                 | Required |
-|--------------|-------------------------------------------------------------|----------|
-| `context`    | Path to the Docker build context (e.g. `.` or `./app`).     | ✅ Yes   |
-| `repository` | Full repository path for the Docker image.                  | ✅ Yes   |
-| `scope`      | Scope or namespace for the image (e.g. team/project name).  | ✅ Yes   |
-| `registry`   | Container registry URL (e.g. ACR address, etc.).            | ✅ Yes   |
+| Name         | Description                                                                 | Required | Default                        |
+|--------------|-----------------------------------------------------------------------------|----------|--------------------------------|
+| `context`    | Path to the Docker build context (e.g. `.` or `./app`).                     | ✅ Yes   | —                              |
+| `repository` | Full GitHub repository name. Used for image name.                           | ❌ No    | `${{ github.repository }}`     |
+| `scope`      | Scope or namespace for the image (e.g. `team`, `infra`, `project`).         | ✅ Yes   | —                              |
+| `registry`   | Registry URL (e.g. ACR address).                                            | ✅ Yes   | —                              |
 
 
 ## 🚀 Usage
@@ -28,5 +28,4 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
     context: .
     scope: infra
     registry: ${{ secrets.ACR_URL }}
-    repository: MapColonies/infra-apps
 ```
