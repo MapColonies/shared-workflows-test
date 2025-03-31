@@ -5,10 +5,6 @@ inputs:
     description: "Scope or namespace for the Helm chart."
     required: true
     default: ""
-  repository:
-    description: "Repository name for the Docker image (defaults to current GitHub repository)."
-    required: false
-    default: ${{ github.repository }}
   context:
     description: "Path to the helm directory."
     required: true
@@ -33,7 +29,7 @@ runs:
         version: "v3.12.0"
 
     - name: Get chart's name
-      id: set-chart-name
+      id: set_chart_name
       run: |
         CHART=$(grep '^name:' Chart.yaml | awk '{print $2}')
         echo "chart=$CHART" >> $GITHUB_OUTPUT
@@ -41,7 +37,7 @@ runs:
       shell: bash
 
     - name: Get the chart's version
-      id: set-chart-version
+      id: set_chart_version
       run: |
         VER=$(grep '^version:' Chart.yaml | awk '{print $2}')
         echo "ver=$VER" >> $GITHUB_OUTPUT
