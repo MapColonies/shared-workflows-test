@@ -24,7 +24,7 @@ jobs:
         uses: ./actions/helm-lint
         with:
           repository: ${{ github.repository }}
-          chartDirs: "./infra/test-helm"
+          chartDirs: "./test/chart/test-helm"
 
       - name: Print changed charts
         if: steps.helm-lint.outputs.changed == 'true'
