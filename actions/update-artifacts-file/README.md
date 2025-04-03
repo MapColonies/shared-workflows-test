@@ -1,4 +1,4 @@
-# 📦 Build and Push Helm Chart Action
+# 📦 Update Artifacts File Action
 
 This GitHub Action builds and publishes a Helm chart to a specified registry and updates an `artifacts.json` metadata file using custom shell scripts. 
 
@@ -33,9 +33,7 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 - name: Update artifacts.json
   uses: ./actions/update-artifacts-file
   with:
-    context: actions/update-artifacts-file
     scope: infra
-    repository: ${{ env.action_repo }}
     artifact_name: "sftpgo"
     artifact_tag: "v2.0.2"
     registry: ${{ secrets.ACR_URL }}
