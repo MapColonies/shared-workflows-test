@@ -19,7 +19,7 @@ jobs:
         with:
           type: "docker"
           context: actions/update-artifacts-file
-          scope: infra
+          scope: test
           repository: ${{ github.repository }}
           artifact-name: "sftpgo"
           artifact-tag: "v2.0.2"

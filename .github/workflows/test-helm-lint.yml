@@ -22,7 +22,7 @@ jobs:
         uses: ./actions/helm-lint
         with:
           repository: ${{ github.repository }}
-          chartDirs: "./test/chart/test-helm"
+          chartDirs: "./test/helm"
 
       - name: Print on chart change
         if: steps.helm-lint.outputs.changed == 'true'
