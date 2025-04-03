@@ -7,10 +7,12 @@ This GitHub Action installs dependencies, runs a `prepack` script, and publishes
 
 ## 🛠 Inputs
 
-| Name           | Description                              | Required | Default                           |
-|----------------|------------------------------------------|----------|-----------------------------------|
-| `node-version` | The version of Node.js to use            | ✅ Yes   | `20`                              |
-| `npm-token`    | npm authentication token (`NODE_AUTH_TOKEN`) | ✅ Yes   | —                                 |
+| Name           | Description                                                        | Required | Default                      |
+|----------------|--------------------------------------------------------------------|----------|------------------------------|
+| `node-version` | The version of Node.js to use                                      | ❌ No    | `20`                         |
+| `npm-token`    | npm authentication token (`NODE_AUTH_TOKEN`)                       | ✅ Yes   | —                            |
+| `repository`   | GitHub repository to checkout (useful in reusable workflows)       | ❌ No    | `${{ github.repository }}`   |
+| `path`         | Path to the directory containing the `package.json` to publish     | ❌ No    | `.`                          |
 
 ---
 

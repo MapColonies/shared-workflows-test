@@ -8,7 +8,7 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
 |--------------|-----------------------------------------------------------------------------|----------|--------------------------------|
 | `context`    | Path to the Docker build context (e.g. `.` or `./app`).                     | ✅ Yes   | —                              |
 | `repository` | Full GitHub repository name. Used for image name.                           | ❌ No    | `${{ github.repository }}`     |
-| `scope`      | Scope or namespace for the image (e.g. `team`, `infra`, `project`).         | ✅ Yes   | —                              |
+| `team`      | The image's team owner (e.g. `3d`, `infra`).         | ✅ Yes   | —                              |
 | `registry`   | Registry URL (e.g. ACR address).                                            | ✅ Yes   | —                              |
 
 

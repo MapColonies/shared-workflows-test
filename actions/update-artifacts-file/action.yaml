@@ -4,21 +4,21 @@ inputs:
   scope:
     description: "Scope or namespace for the Helm chart."
     required: true
-    default: ""
   repository:
     description: "Repository for the Helm Chart."
     required: false
+    default: ${{ github.repository }}
   registry:
     description: "Registry to push the artifact to."
     required: true
   context:
     description: "Path to the helm directory."
-    required: true
+    required: false
     default: "./helm"
   type:
     description: "Artifact`s type"
     type: string
-    required: true
+    required: false
     default: "docker"
   artifact_name:
     description: "Artifact`s name"

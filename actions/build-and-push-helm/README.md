@@ -6,8 +6,8 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 
 | Name         | Description                                                                                   | Required | Default                |
 |--------------|-----------------------------------------------------------------------------------------------|----------|------------------------|
-| `scope`      | Scope or namespace within the registry (e.g. `team`, `project`, `infra`)                      | ✅ Yes   | `""`                   |
-| `context`    | Relative path to the Helm chart directory                                                     | ✅ Yes   | `./helm`               |
+| `team`      | The image's team owner (e.g. `3d`, `infra`).                      | ✅ Yes   |                    |
+| `context`    | Relative path to the Helm chart directory                                                     | ❌ No   | `./helm`               |
 | `registry`   | OCI registry URL where the chart will be pushed (e.g. ACR address)                            | ✅ Yes   |                       |
 
 

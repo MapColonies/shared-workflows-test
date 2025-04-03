@@ -1,8 +1,6 @@
 name: Test Build and Push Docker Image
 
 on:
-  workflow_dispatch:
-  workflow_call:
   push:
     branches:
       - master
@@ -27,5 +25,5 @@ jobs:
         uses: ./actions/build-and-push-docker
         with:
           context: ./test
-          scope: infra
+          team: infra
           registry: ${{ secrets.ACR_URL }}

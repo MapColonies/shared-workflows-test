@@ -1,8 +1,6 @@
 name: Test Build and Push Helm Chart
 
 on:
-  workflow_dispatch:
-  workflow_call:
   push:
     branches:
       - master
@@ -27,6 +25,6 @@ jobs:
       - name: Test Build and push Helm Chart
         uses: ./actions/build-and-push-helm
         with:
-          context: .test/chart/test-helm
-          scope: chart
+          context: .test/helm
+          team: infra
           registry: ${{ secrets.ACR_URL }}
