@@ -13,6 +13,7 @@ authenticated operations like pulling or pushing images.
 
 ## 🚀 Usage
 
+<!-- x-release-please-start-version -->
 ```yaml
 - name: Artifactory Login
   uses: MapColonies/shared-workflows/actions/artifactory-login@artifactory-login-v1
@@ -21,3 +22,4 @@ authenticated operations like pulling or pushing images.
     username: ${{ secrets.ACR_PUSH_USER }}
     password: ${{ secrets.ACR_PUSH_TOKEN }}
 ```
+<!-- x-release-please-end-version -->

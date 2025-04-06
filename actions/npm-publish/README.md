@@ -18,6 +18,8 @@ This GitHub Action installs dependencies, runs a `prepack` script, and publishes
 
 ## 🚀 Usage
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 - name: Publish npm Package
   uses: MapColonies/shared-workflows/actions/publish-npm@v1
@@ -25,3 +27,4 @@ This GitHub Action installs dependencies, runs a `prepack` script, and publishes
     node-version: '20'
     npm-token: ${{ secrets.NPM_TOKEN }}
 ```
+<!-- x-release-please-end-version -->

@@ -29,6 +29,8 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 
 ## ✨ Usage
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 - name: Update artifacts.json
   uses: ./actions/update-artifacts-file
@@ -39,3 +41,4 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
     registry: ${{ secrets.ACR_URL }}
     github_token: ${{ secrets.GH_PAT }}
 ```
+<!-- x-release-please-end-version --

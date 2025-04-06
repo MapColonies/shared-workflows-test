@@ -19,9 +19,12 @@ It detects which charts have changed and only tests those.
 
 ## 🚀 Usage
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 - name: Lint and Test Charts
   uses: MapColonies/shared-workflows/actions/helm-lint@helm-lint-v1
   with:
     chartDirs: infra/monitoring,infra/sftpgo
 ```
+<!-- x-release-please-end-version -->

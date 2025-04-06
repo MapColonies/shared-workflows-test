@@ -14,6 +14,8 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
 
 ## 🚀 Usage
 
+<!-- x-release-please-start-version -->
+
 ```yaml
 - name: Artifactory Login
   uses: MapColonies/shared-workflows/actions/artifactory-login@artifactory-login-v1
@@ -29,3 +31,4 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
     scope: infra
     registry: ${{ secrets.ACR_URL }}
 ```
+<!-- x-release-please-end-version -->
