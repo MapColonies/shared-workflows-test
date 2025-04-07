@@ -1,4 +1,4 @@
-# 📦 Publish npm Package Action
+# Publish npm Package Action
 
 This GitHub Action installs dependencies, runs a `prepack` script, and publishes a package to the npm registry using
 [`npm-publish`](https://github.com/JS-DevTools/npm-publish).

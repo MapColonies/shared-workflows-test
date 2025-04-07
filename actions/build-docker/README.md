@@ -1,6 +1,6 @@
-# Build and Push Docker Image Action
+# Build Docker Image Action
 
-This GitHub Action builds a Docker image from a specified context and pushes it to a given container registry.
+This GitHub Action builds a Docker image from a specified context
 
 ## 🛠 Inputs
 
@@ -8,9 +8,13 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
 |--------------|-----------------------------------------------------------------------------|----------|--------------------------------|
 | `context`    | Path to the Docker build context (e.g. `.` or `./app`).                     | ✅ Yes   | —                              |
 | `repository` | Full GitHub repository name. Used for image name.                           | ❌ No    | `${{ github.repository }}`     |
-| `team`      | The image's team owner (e.g. `3d`, `infra`).         | ✅ Yes   | —                              |
+| `team`      | The image's team owner (e.g. `3d`, `infra`).                                 | ✅ Yes   | —                              |
 | `registry`   | Registry URL (e.g. ACR address).                                            | ✅ Yes   | —                              |
+## 📤 Outputs
 
+| Name    | Description                      |
+|---------|----------------------------------|
+| `DOCKER_IMAGE_NAME` | Fully qualified Docker image name to push (github output)|
 
 ## 🚀 Usage
 
@@ -24,7 +28,7 @@ This GitHub Action builds a Docker image from a specified context and pushes it 
     username: ${{ secrets.ACR_PUSH_USER }}
     password: ${{ secrets.ACR_PUSH_TOKEN }}
 
-- name: Build and Push Docker Image
+- name: Build Docker Image
   uses: MapColonies/shared-workflows/actions/build-and-push-docker@build-and-push-docker-v1
   with:
     context: .

@@ -1,10 +1,10 @@
-# 📦 Update Artifacts File Action
+# Update Artifacts File Action
 
 This GitHub Action builds and publishes a Helm chart to a specified registry and updates an `artifacts.json` metadata file using custom shell scripts. 
 
 ---
 
-## 🚀 What It Does
+## ✨ What It Does
 
 - Checks out the Helm chart repository
 - Runs a script to update `artifacts.json` with the chart version and metadata
@@ -12,7 +12,7 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 
 ---
 
-## 🔧 Inputs
+## 🛠 Inputs
 
 | Name             | Description                                                                 | Required | Default         |
 |------------------|-----------------------------------------------------------------------------|----------|-----------------|
@@ -27,7 +27,7 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 
 ---
 
-## ✨ Usage
+## 🚀 Usage
 
 <!-- x-release-please-start-version -->
 

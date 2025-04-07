@@ -5,7 +5,8 @@ on:
     branches:
       - master
     paths:
-      - "actions/build-and-push-docker/**"
+      - "actions/build-docker/**"
+      - "actions/push-docker/**"
       
 jobs:
   test-build-and-push:
@@ -21,9 +22,14 @@ jobs:
           username: ${{ secrets.ACR_PUSH_USER }}
           password: ${{ secrets.ACR_PUSH_TOKEN }}
 
-      - name: Test Build and push Docker Image
-        uses: ./actions/build-and-push-docker
+      - name: Test Build Docker Image
+        uses: ./actions/build-docker
         with:
           context: ./test
           team: infra
           registry: ${{ secrets.ACR_URL }}
+      
+      - name: Test Push Docker Image
+        uses: ./actions/push-docker
+        with:
+          image-name: $DOCKER_IMAGE_NAME
