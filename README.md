@@ -2,7 +2,7 @@
 
 This repository contains GitHub Actions used across the MapColonies organization, developed and maintained by the **DevOps team**.
 
-> 🧪 The workflows in this repo are for testing and validating the functionality of the actions — **not for general use** in other projects.
+> 🧪 The workflows in this repo are primarily for testing and validating the functionality of these actions — **not for general use** in other projects, unless stated otherwise.
 
 ---
 
@@ -12,13 +12,14 @@ This repository contains GitHub Actions used across the MapColonies organization
 .
 ├── actions/                # Reusable composite actions
 │   ├── artifactory-login/
-│   ├── build-and-push-docker/
+│   ├── build-docker/
 │   ├── build-and-push-helm/
 │   ├── helm-lint/
 │   ├── npm-publish/
+│   ├── push-docker/
 │   └── update-artifacts-file/
 ├── test/                   # Assets for testing the actions
-├── .github/workflows/      # Test workflows for each action
+├── .github/workflows/      # Utility and Test workflows for each action
 ├── release-please-config.json
 └── README.md
 ```
@@ -34,6 +35,7 @@ Each action has a dedicated folder with:
 - Maintain reusable actions for use in other repositories
 - Create test workflows to verify action behavior before tagging
 - Manage action versioning and changelogs via `release-please`
+- Provide general-use workflows like slash-command triggers
 
 ---
 
@@ -42,11 +44,21 @@ Each action has a dedicated folder with:
 | Action | Description |
 |--------|-------------|
 | `artifactory-login`       | Logs in to Azure Container Registry |
-| `build-and-push-docker`   | Builds and pushes Docker images |
+| `build-docker`          | Builds Docker images                    |
+| `push-docker`           | Pushes Docker images                    |
 | `build-and-push-helm`     | Packages and publishes Helm charts |
 | `helm-lint`               | Lints and tests Helm charts |
 | `npm-publish`             | Publishes npm packages |
 | `update-artifacts-file`   | Updates `artifacts.json` metadata |
+
+---
+
+## 🧰 Public Workflows
+
+| Workflow        | Purpose                                        |
+|----------------|------------------------------------------------|
+| `slash-command`| Dispatch slash-command triggered workflows     |
+| `postgis-check`| Test DB migrations and compatibility via PR comments |
 
 ---
 
@@ -55,3 +67,4 @@ Each action has a dedicated folder with:
 - Each action has its own `README.md` for documentation.
 - Versioning and changelog management are handled by `release-please`.
 - Tags follow semver (`v1.1.0`, `v1.1`, `v1`).
+- Only `slash-command` and `postgis-check` workflows are intended for **external usage**.
