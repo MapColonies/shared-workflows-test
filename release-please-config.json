@@ -74,14 +74,19 @@
         "package-name": "build-and-push-helm",
         "extra-files": ["README.md"]
       },
+      "actions/eslint": {
+        "release-type": "simple",
+        "package-name": "eslint",
+        "extra-files": ["README.md"]
+      },
       "actions/helm-lint": {
         "release-type": "simple",
         "package-name": "helm-lint",
         "extra-files": ["README.md"]
       },
-      "actions/npm-publish": {
+      "actions/openapi-lint": {
         "release-type": "simple",
-        "package-name": "npm-publish",
+        "package-name": "openapi-lint",
         "extra-files": ["README.md"]
       },
       "actions/update-artifacts-file": {
