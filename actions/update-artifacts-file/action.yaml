@@ -2,7 +2,7 @@ name: "Update Artifacts File"
 description: "An action to update the artifacts file"
 inputs:
   scope:
-    description: "Scope or namespace for the Helm chart."
+    description: "Scope or namespace for the artifact."
     required: true
   registry:
     description: "Registry to push the artifact to."
