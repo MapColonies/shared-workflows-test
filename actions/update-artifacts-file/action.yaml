@@ -18,8 +18,7 @@ inputs:
   type:
     description: "Artifact`s type"
     type: string
-    required: false
-    default: "docker"
+    required: true
   artifact_name:
     description: "Artifact`s name"
     type: string
