@@ -26,5 +26,5 @@ jobs:
         uses: ./actions/build-and-push-helm
         with:
           context: .test/helm
-          team: infra
+          domain: infra
           registry: ${{ secrets.ACR_URL }}

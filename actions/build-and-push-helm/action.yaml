@@ -1,8 +1,8 @@
 name: "Build and Push Helm Chart"
 description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
-  team:
-    description: "The image's team owner."
+  domain:
+    description: "The chart's domain."
     required: true
   context:
     description: "Path to the helm directory."
@@ -52,6 +52,6 @@ runs:
     - name: Publish chart to ACR
       run: |
         helm push ${{ steps.set-chart-name.outputs.chart }}-${{ steps.set-chart-version.outputs.ver }}.tgz \
-          oci://${{ inputs.registry }}/helm/${{ inputs.scope }}
+          oci://${{ inputs.registry }}/helm/${{ inputs.domain }}
       working-directory: ${{ inputs.context }}
       shell: bash

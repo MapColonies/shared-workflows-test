@@ -8,7 +8,7 @@ This GitHub Action builds a Docker image from a specified context
 |--------------|-----------------------------------------------------------------------------|----------|--------------------------------|
 | `context`    | Path to the Docker build context (e.g. `.` or `./app`).                     | ✅ Yes   | —                              |
 | `repository` | Full GitHub repository name. Used for image name.                           | ❌ No    | `${{ github.repository }}`     |
-| `team`      | The image's team owner (e.g. `3d`, `infra`).                                 | ✅ Yes   | —                              |
+| `domain`      | The image's domain (e.g. `3d`, `infra`).                                 | ✅ Yes   | —                              |
 | `registry`   | Registry URL (e.g. ACR address).                                            | ✅ Yes   | —                              |
 ## 📤 Outputs
 
@@ -32,7 +32,7 @@ This GitHub Action builds a Docker image from a specified context
   uses: MapColonies/shared-workflows/actions/build-docker@build-docker-v1.0.0
   with:
     context: .
-    scope: infra
+    domain: infra
     registry: ${{ secrets.ACR_URL }}
 ```
 <!-- x-release-please-end-version -->

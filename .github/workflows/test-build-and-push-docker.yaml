@@ -26,7 +26,7 @@ jobs:
         uses: ./actions/build-docker
         with:
           context: ./test
-          team: infra
+          domain: infra
           registry: ${{ secrets.ACR_URL }}
       
       - name: Test Push Docker Image

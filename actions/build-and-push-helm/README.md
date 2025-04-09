@@ -6,7 +6,7 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 
 | Name         | Description                                                                                   | Required | Default                |
 |--------------|-----------------------------------------------------------------------------------------------|----------|------------------------|
-| `team`      | The image's team owner (e.g. `3d`, `infra`).                      | ✅ Yes   |                    |
+| `domain`      | The chart's domain (e.g. `3d`, `infra`).                      | ✅ Yes   |                    |
 | `context`    | Relative path to the Helm chart directory                                                     | ❌ No   | `./helm`               |
 | `registry`   | OCI registry URL where the chart will be pushed (e.g. ACR address)                            | ✅ Yes   |                       |
 
@@ -34,7 +34,7 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
   uses: MapColonies/shared-workflows/actions/build-and-push-helm@build-and-push-helm-v1.0.0
   with:
     context: ./infra/monitoring
-    scope: infra
+    domain: infra
     registry: ${{ secrets.ACR_URL }}
 ```
 <!-- x-release-please-end-version -->
