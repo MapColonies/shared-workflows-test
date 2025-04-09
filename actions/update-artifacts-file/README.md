@@ -41,4 +41,4 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
     registry: ${{ secrets.ACR_URL }}
     github_token: ${{ secrets.GH_PAT }}
 ```
-<!-- x-release-please-end-version --
+<!-- x-release-please-end-version -->
