@@ -7,9 +7,9 @@ It detects which charts have changed and only tests those.
 
 ## 🛠 Inputs
 
-| Name         | Description                                                  | Required | Default |
-|--------------|--------------------------------------------------------------|----------|---------|
-| `chartDirs`  | Comma-separated list of root directories with Helm charts.   | ✅ Yes     | `.`     |
+| Name         | Description                                                  | Required |
+|--------------|--------------------------------------------------------------|----------|
+| `chartDirs`  | Comma-separated list of root directories with Helm charts.   | ✅ Yes     |
 
 ## 📤 Outputs
 
