@@ -32,4 +32,4 @@ jobs:
       - name: Test Push Docker Image
         uses: ./actions/push-docker
         with:
-          image-name: $DOCKER_IMAGE_NAME
+          image_name: $DOCKER_IMAGE_NAME

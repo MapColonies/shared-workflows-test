@@ -11,7 +11,7 @@ This action assumes the image is already tagged and available in the local Docke
 
 | Name         | Description                                        | Required |
 |--------------|----------------------------------------------------|----------|
-| `image-name` | The fully qualified name of the Docker image (including tag) to push, e.g. `my-registry.com/my-scope/my-image:tag` | ✅ Yes   |
+| `image_name` | The fully qualified name of the Docker image (including tag) to push, e.g. `my-registry.com/my-scope/my-image:tag` | ✅ Yes   |
 
 ---
 
@@ -45,6 +45,6 @@ jobs:
       - name: Push Docker Image
         uses: MapColonies/shared-workflows/actions/push-docker@push-docker-v1.0.0
         with:
-          image-name: $DOCKER_IMAGE_NAME
+          image_name: $DOCKER_IMAGE_NAME
 ```
 <!-- x-release-please-end-version -->
