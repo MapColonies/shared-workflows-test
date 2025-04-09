@@ -61,12 +61,3 @@ Each action has a dedicated folder with:
 |----------------|------------------------------------------------|
 | `slash-command`| Dispatch slash-command triggered workflows     |
 | `postgis-check`| Test DB migrations and compatibility via PR comments |
-
----
-
-## 📝 Notes
-
-- Each action has its own `README.md` for documentation.
-- Versioning and changelog management are handled by `release-please`.
-- Tags follow semver (`v1.1.0`, `v1.1`, `v1`).
-- Only `slash-command` and `postgis-check` workflows are intended for **external usage**.
