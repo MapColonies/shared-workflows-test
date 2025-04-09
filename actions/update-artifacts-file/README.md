@@ -17,7 +17,6 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 | Name             | Description                                                                 | Required | Default         |
 |------------------|-----------------------------------------------------------------------------|----------|-----------------|
 | `scope`          | The directory name used as a logical scope for the artifact                | ✅ Yes   |             |
-| `repository`     | GitHub repository that contains the `artifacts.json` file                  | ❌ No    | Current repo    |
 | `context`        | Path to the directory containing the Helm chart and helper scripts         | ❌ No   | `./helm`        |
 | `registry`       | Registry URL the artifact is pushed to (e.g., ACR address)                 | ✅ Yes   |                |
 | `type`           | Type of artifact (`helm`, `docker`, etc.)                                  | ✅ Yes   |  |
