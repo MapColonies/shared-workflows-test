@@ -20,7 +20,7 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 | `repository`     | GitHub repository that contains the `artifacts.json` file                  | ❌ No    | Current repo    |
 | `context`        | Path to the directory containing the Helm chart and helper scripts         | ❌ No   | `./helm`        |
 | `registry`       | Registry URL the artifact is pushed to (e.g., ACR address)                 | ✅ Yes   | —               |
-| `type`           | Type of artifact (`helm`, `docker`, etc.)                                  | ❌ No   |         |
+| `type`           | Type of artifact (`helm`, `docker`, etc.)                                  | ❌ No   | `docker` |
 | `artifact_name`  | Name of the artifact (e.g. `sftpgo`, `minio`)                              | ✅ Yes   | —               |
 | `artifact_tag`   | Tag or version of the artifact (e.g. `v1.2.3`, `latest`)                   | ✅ Yes   | —               |
 | `github_token`   | GitHub token with permission to commit & push changes                      | ✅ Yes   | —               |
