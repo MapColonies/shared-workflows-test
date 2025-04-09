@@ -1,7 +1,7 @@
 name: "Run ESLint"
 description: "Installs dependencies and runs ESLint"
 inputs:
-  node-version:
+  node_version:
     description: "Node.js version"
     default: "20"
     required: false
@@ -19,7 +19,7 @@ runs:
     - name: Set up Node.js
       uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
       with:
-        node-version: ${{ inputs['node-version'] }}
+        node-version: ${{ inputs['node_version'] }}
 
     - run: npm install
       shell: bash

@@ -6,7 +6,7 @@ This GitHub Action installs dependencies and runs ESLint to lint your project co
 
 | Name           | Description                           | Default | Required |
 |----------------|---------------------------------------|---------|----------|
-| `node-version` | Node.js version to set up             | `20`    | false    |
+| `node_version` | Node.js version to set up             | `20`    | false    |
 | `path`         | Path to the directory containing your Node.js project| `.`     | false    |
 
 ## 🚀 Usage
