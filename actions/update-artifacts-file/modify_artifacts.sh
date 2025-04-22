@@ -11,5 +11,5 @@ if [ -d "$DOMAIN" ]; then
     --arg tag "$ARTIFACT_TAG" \
     '.[$type][$registry][$key] = $tag' "$path" > tmp.json && mv tmp.json "$path"
 else
-  echo "Directory $REPOSITORY/$DOMAIN does not exist"
+  echo "Directory $REGISTRY/$DOMAIN does not exist"
 fi
