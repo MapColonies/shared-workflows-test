@@ -32,7 +32,7 @@ on:
 jobs:
   helm-lint:
     if: ${{ inputs.enableHelmLint == true }}
-    uses: MapColonies/shared-workflows/.github/workflows/helm-lint.yaml@master
+    uses: MapColonies/shared-workflows/.github/workflows/helm-lint.yaml@v4
     secrets: inherit
     with:
       chartDirs: ${{ inputs.chartDirs }}
