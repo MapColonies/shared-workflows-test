@@ -2,7 +2,7 @@ name: Test Build and Push Helm Chart
 
 on:
   workflow_dispatch:
-  workflow_run:
+  workflow_call:
   push:
     branches:
       - master
