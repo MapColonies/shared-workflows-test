@@ -33,11 +33,6 @@ runs:
       working-directory: ${{ inputs.context }}
       shell: bash
 
-    - name: Debug output filename
-      run: |
-        echo "Packaged chart file: ${{ steps.package_chart.outputs.package_file }}"
-      shell: bash
-
     - name: Publish chart to ACR
       run: |
         helm push "${{ steps.package_chart.outputs.package_file }}" \
