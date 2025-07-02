@@ -7,7 +7,7 @@ inputs:
     default: ""
   context:
     description: "Path to the helm directory."
-    required: true
+    required: false
     default: "./helm"
   registry:
     description: "Azure Registry to authenticate against."
