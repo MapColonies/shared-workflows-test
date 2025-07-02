@@ -11,13 +11,6 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 | `registry`   | OCI registry URL where the chart will be pushed (e.g. ACR address)                            | ✅ Yes   |                       |
 
 
-## 📤 Outputs
-
-| Name    | Description                      |
-|---------|----------------------------------|
-| `chart` | Name of the Helm chart           |
-| `ver`   | Version of the Helm chart        |
-
 ## 🚀 Usage
 
 <!-- x-release-please-start-version -->
