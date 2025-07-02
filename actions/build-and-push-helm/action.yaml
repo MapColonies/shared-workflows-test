@@ -2,9 +2,8 @@ name: "Build and Push Helm Chart"
 description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
   domain:
-    description: "Domain or namespace for the Helm chart."
+    description: "The chart's domain."
     required: true
-    default: ""
   context:
     description: "Path to the helm directory."
     required: false
