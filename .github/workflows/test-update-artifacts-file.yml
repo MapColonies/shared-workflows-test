@@ -18,7 +18,6 @@ jobs:
         uses: ./actions/update-artifacts-file
         with:
           type: "helm"
-          context: actions/update-artifacts-file
           domain: infra
           artifact_name: "jenkins"
           artifact_tag: "5.0.17"
