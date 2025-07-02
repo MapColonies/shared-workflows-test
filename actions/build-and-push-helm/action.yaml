@@ -1,12 +1,13 @@
 name: "Build and Push Helm Chart"
 description: "Builds and publishes a Helm chart to the specified registry."
 inputs:
-  domain:
-    description: "The chart's domain."
+  scope:
+    description: "Scope or namespace for the Helm chart."
     required: true
+    default: ""
   context:
     description: "Path to the helm directory."
-    required: false
+    required: true
     default: "./helm"
   registry:
     description: "Azure Registry to authenticate against."
