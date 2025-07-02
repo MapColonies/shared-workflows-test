@@ -11,7 +11,13 @@ inputs:
   registry:
     description: "Azure Registry to authenticate against."
     required: true
-
+outputs:
+  chart:
+    description: "The name of the chart."
+  ver:
+    description: "The version of the chart."
+  package_file:
+    description: "The path to the packaged chart file."
 runs:
   using: "composite"
   steps:

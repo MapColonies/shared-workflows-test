@@ -26,6 +26,16 @@ This GitHub Action builds and publishes a Helm chart to a specified registry and
 
 ---
 
+## 📤 Outputs
+
+| Name    | Description                      |
+|---------|----------------------------------|
+| `chart` | Name of the Helm chart           |
+| `ver`   | Version of the Helm chart        |
+| `package_file` | Packaged chart file       |
+
+---
+
 ## 🚀 Usage
 
 <!-- x-release-please-start-version -->
