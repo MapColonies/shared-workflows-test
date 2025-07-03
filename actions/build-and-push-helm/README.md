@@ -18,7 +18,6 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 | `chart` | Name of the Helm chart           |
 | `ver`   | Version of the Helm chart        |
 
-
 ## 🚀 Usage
 
 <!-- x-release-please-start-version -->
