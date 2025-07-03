@@ -2,7 +2,7 @@ name: "Update Artifacts File"
 description: "An action to update the artifacts file in a different repository"
 
 env:
-  TARGET_PATH: temp_helm_charts
+  TARGET_PATH: temp_repo
 
 inputs:
   domain:
