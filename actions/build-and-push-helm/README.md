@@ -10,7 +10,6 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 | `context`    | Relative path to the Helm chart directory                                                     | ❌ No   | `./helm`               |
 | `registry`   | OCI registry URL where the chart will be pushed (e.g. ACR address)                            | ✅ Yes   |                       |
 
----
 
 ## 📤 Outputs
 
@@ -19,7 +18,6 @@ This GitHub Action packages a Helm chart and pushes it to a Azure Container Regi
 | `chart` | Name of the Helm chart           |
 | `ver`   | Version of the Helm chart        |
 
----
 
 ## 🚀 Usage
 
