@@ -23,3 +23,4 @@ jobs:
           artifact_tag: "5.0.17"
           registry: ${{ secrets.ACR_URL }}
           github_token: ${{ secrets.GH_PAT }}
+          target_repo: "mapcolonies/helm-charts-test"
