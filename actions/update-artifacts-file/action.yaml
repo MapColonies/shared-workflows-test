@@ -57,7 +57,6 @@ runs:
         TYPE: ${{ inputs.type }}
         REGISTRY: ${{ inputs.registry }}
         TARGET_DIR: $TARGET_PATH
-        TARGET_BRANCH: ${{ inputs.target_branch }}
 
     - name: Set execute permission on commit script
       run: chmod +x actions/update-artifacts-file/commit_changes.sh
