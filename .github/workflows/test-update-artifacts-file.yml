@@ -1,9 +1,7 @@
 name: Update artifacts.json
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
     paths:
       - "actions/update-artifacts-file/**"
 
