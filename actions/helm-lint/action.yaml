@@ -3,7 +3,7 @@ description: "An action to lint and test Helm charts using chart-testing and kin
 inputs:
   chartDirs:
     description: "Comma-separated list of root directories containing Helm charts."
-    required: true
+    required: false
     default: "."
 outputs:
   changed: 
