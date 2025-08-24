@@ -46,7 +46,6 @@ runs:
       id: list_changed
       shell: bash
       run: |
-        echo $(ls helm)
         changed=$(ct list-changed --chart-dirs ${{ inputs.chartDirs }} --target-branch ${{ github.event.repository.default_branch }} --config ${{ github.action_path }}/configs/ct.yaml)
         echo "changed=$changed"
         if [[ -n "$changed" ]]; then
