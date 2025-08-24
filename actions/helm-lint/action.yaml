@@ -20,7 +20,7 @@ runs:
     - name: Checkout Shared Workflows repository
       uses: actions/checkout@v4
       with:
-        repository: MapColonies/shared-workflows
+        repository: MapColonies/shared-workflows-test
         path: shared-workflows
 
     - name: Set up Helm
